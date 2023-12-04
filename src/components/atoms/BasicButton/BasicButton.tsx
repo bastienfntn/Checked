@@ -9,7 +9,9 @@ type Props = {
 
 export default function BasicButton(props: Props) {
   return (
-    <Pressable style={styles.basicButton} onPress={props.onPress}>
+    <Pressable
+      style={[styles.basicButton, props.style]}
+      onPress={props.onPress}>
       <Text style={styles.basicButtonText}>{props.buttonTitle}</Text>
     </Pressable>
   );

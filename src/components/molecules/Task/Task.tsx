@@ -1,7 +1,6 @@
 import BodyMedium from '../../atoms/BodyMedium/BodyMedium';
 import React from 'react';
-import {StyleSheet, TouchableOpacity} from 'react-native';
-import Icon from 'react-native-ionicons';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 
 type Props = {
   text: string;
@@ -10,7 +9,7 @@ type Props = {
 export default function Task(props: Props) {
   return (
     <TouchableOpacity style={styles.taskContainer}>
-      <Icon name="checkbox-outline" style={styles.icon} />
+      <View style={styles.checkbox} />
       <BodyMedium text={props.text} />
     </TouchableOpacity>
   );
@@ -22,11 +21,18 @@ const styles = StyleSheet.create({
     alignItems: 'center',
     marginBottom: 10,
     backgroundColor: 'white',
-    padding: 10,
+    padding: 12,
     margin: 7,
     borderRadius: 10,
   },
-  icon: {
-    marginRight: 10,
+  checkbox: {
+    marginRight: 12,
+    borderStyle: 'solid',
+    borderWidth: 2,
+    borderColor: 'black',
+    width: 20,
+    height: 20,
+    borderRadius: 5,
+    marginLeft: 5,
   },
 });

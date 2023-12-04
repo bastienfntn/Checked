@@ -3,10 +3,11 @@ import React from 'react';
 
 type Props = {
   text: string;
+  style?: object;
 };
 
 export default function BodyMedium(props: Props) {
-  return <Text style={styles.bodyMedium}>{props.text}</Text>;
+  return <Text style={[styles.bodyMedium, props.style]}>{props.text}</Text>;
 }
 
 const styles = StyleSheet.create({

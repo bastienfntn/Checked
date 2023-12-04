@@ -10,7 +10,7 @@ type Props = {
 export default function Task(props: Props) {
   return (
     <View style={styles.taskContainer}>
-      <Icon name="checkbox-outline" />
+      <Icon name="checkbox-outline" style={styles.icon} />
       <BodyMedium text={props.text} />
     </View>
   );
@@ -21,5 +21,8 @@ const styles = StyleSheet.create({
     flexDirection: 'row',
     alignItems: 'center',
     marginBottom: 10,
+  },
+  icon: {
+    marginRight: 10,
   },
 });

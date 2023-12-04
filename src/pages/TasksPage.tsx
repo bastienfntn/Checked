@@ -7,12 +7,18 @@ export default function TasksPage() {
   const addTask = (task: string) => {
     setTasks([...tasks, task]);
   };
+  const deleteTask = (index: number) => {
+    const newTasks = [...tasks];
+    newTasks.splice(index, 1);
+    setTasks(newTasks);
+  };
 
   return (
     <TasksPageTemplate
       addTask={addTask}
       tasks={tasks}
-      buttonTitle={'Add a Task'}>
+      buttonTitle={'Add a Task'}
+      deleteTask={deleteTask}>
       To-Do List:
     </TasksPageTemplate>
   );

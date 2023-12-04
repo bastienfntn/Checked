@@ -1,16 +1,27 @@
 import React from 'react';
-import {StyleSheet, View} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 import Task from '../../molecules/Task/Task';
 
 type Props = {
   tasks: string[];
+  deleteTask: (index: number) => void;
+  changeDeleteModalState: () => void;
+  setTouchedTask: (index: number) => void;
 };
 
-export default function TaskList({tasks}: Props) {
+export default function TaskList(props: Props) {
+  const handleDeleteTask = (index: number) => {
+    props.changeDeleteModalState();
+    props.setTouchedTask(index);
+  };
   return (
     <View style={styles.tasksList}>
-      {tasks.map((task, index) => (
-        <Task key={`task-${index}`} text={task} />
+      {props.tasks.map((task, index) => (
+        <TouchableOpacity
+          key={`task-${index}`}
+          onLongPress={() => handleDeleteTask(index)}>
+          <Task text={task} />
+        </TouchableOpacity>
       ))}
     </View>
   );

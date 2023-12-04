@@ -1,6 +1,6 @@
 import BodyMedium from '../../atoms/BodyMedium/BodyMedium';
 import React from 'react';
-import {StyleSheet, TouchableOpacity} from 'react-native';
+import {StyleSheet, TouchableOpacity, View} from 'react-native';
 
 type Props = {
   text: string;
@@ -12,7 +12,7 @@ export default function Task(props: Props) {
     setIsDone(!isDone);
   };
   return (
-    <TouchableOpacity style={styles.taskContainer}>
+    <View style={styles.container}>
       <TouchableOpacity
         style={isDone ? styles.checkboxFilled : styles.checkboxEmpty}
         onPress={handlePress}
@@ -21,20 +21,11 @@ export default function Task(props: Props) {
         text={props.text}
         style={isDone ? styles.linedText : undefined}
       />
-    </TouchableOpacity>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  taskContainer: {
-    flexDirection: 'row',
-    alignItems: 'center',
-    marginBottom: 10,
-    backgroundColor: 'white',
-    padding: 12,
-    margin: 7,
-    borderRadius: 10,
-  },
   checkboxEmpty: {
     marginRight: 12,
     borderStyle: 'solid',
@@ -58,5 +49,14 @@ const styles = StyleSheet.create({
   },
   linedText: {
     textDecorationLine: 'line-through',
+  },
+  container: {
+    flexDirection: 'row',
+    alignItems: 'center',
+    marginBottom: 10,
+    backgroundColor: 'white',
+    padding: 12,
+    margin: 7,
+    borderRadius: 10,
   },
 });

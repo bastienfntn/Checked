@@ -3,15 +3,15 @@ import React from 'react';
 
 type Props = {
   children: string;
+  style?: object;
 };
 
-export default function ({children}: Props) {
-  return <Text style={styles.mediumTitle}>{children}</Text>;
+export default function ({children, style}: Props) {
+  return <Text style={[styles.mediumTitle, style]}>{children}</Text>;
 }
 
 const styles = StyleSheet.create({
   mediumTitle: {
-    textAlign: 'center',
     fontSize: 26,
     fontWeight: '600',
   },

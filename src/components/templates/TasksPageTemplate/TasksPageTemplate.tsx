@@ -29,7 +29,7 @@ export default function TasksPageTemplate({
 
   return (
     <View style={styles.tasksPageTemplate}>
-      <MediumTitle>{children}</MediumTitle>
+      <MediumTitle style={styles.taskListTitle}>{children}</MediumTitle>
       <TasksList tasks={tasks} />
       <BasicButton onPress={changeModalState} buttonTitle={buttonTitle} />
       {isModalOpen && (
@@ -42,5 +42,9 @@ export default function TasksPageTemplate({
 const styles = StyleSheet.create({
   tasksPageTemplate: {
     flex: 1,
+  },
+  taskListTitle: {
+    marginLeft: 30,
+    marginTop: 40,
   },
 });

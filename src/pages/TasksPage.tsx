@@ -4,15 +4,14 @@ import React from 'react';
 
 export default function TasksPage() {
   const [tasks, setTasks] = useState<string[]>([]);
-
-  const onPress = () => {
-    setTasks([...tasks, 'New Task']);
+  const addTask = (task: string) => {
+    setTasks([...tasks, task]);
   };
 
   return (
     <TasksPageTemplate
+      addTask={addTask}
       tasks={tasks}
-      onPress={onPress}
       buttonTitle={'Add a Task'}>
       ToDo
     </TasksPageTemplate>

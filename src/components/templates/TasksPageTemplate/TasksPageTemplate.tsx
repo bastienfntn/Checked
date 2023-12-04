@@ -10,12 +10,14 @@ type Props = {
   children: string;
   buttonTitle: string;
   addTask: (task: string) => void;
+  deleteTask: (index: number) => void;
 };
 
 export default function TasksPageTemplate({
   tasks,
   children,
   addTask,
+  deleteTask,
   buttonTitle,
 }: Props) {
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -30,7 +32,7 @@ export default function TasksPageTemplate({
   return (
     <View style={styles.tasksPageTemplate}>
       <MediumTitle>{children}</MediumTitle>
-      <TasksList tasks={tasks} />
+      <TasksList tasks={tasks} deleteTask={deleteTask} />
       <BasicButton onPress={changeModalState} buttonTitle={buttonTitle} />
       {isModalOpen && (
         <NewTaskModal handleCancel={changeModalState} addTask={handleAddTask} />

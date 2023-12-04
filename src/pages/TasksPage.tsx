@@ -13,7 +13,7 @@ export default function TasksPage() {
       addTask={addTask}
       tasks={tasks}
       buttonTitle={'Add a Task'}>
-      ToDo
+      To-Do List:
     </TasksPageTemplate>
   );
 }

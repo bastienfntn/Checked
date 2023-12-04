@@ -25,10 +25,15 @@ export default function NewTaskModalView(props: Props) {
           />
         </View>
         <View style={styles.buttonsView}>
-          <BasicButton onPress={props.handleCancel} buttonTitle={'Cancel'} />
+          <BasicButton
+            onPress={props.handleCancel}
+            buttonTitle={'Cancel'}
+            style={styles.cancelButton}
+          />
           <BasicButton
             onPress={() => props.addTask(text)}
             buttonTitle={'Add'}
+            style={styles.addButton}
           />
         </View>
       </View>
@@ -67,5 +72,11 @@ const styles = StyleSheet.create({
   },
   buttonsView: {
     flexDirection: 'row',
+  },
+  cancelButton: {
+    backgroundColor: '#FAB4B4',
+  },
+  addButton: {
+    backgroundColor: '#B4FAB4',
   },
 });

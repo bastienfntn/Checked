@@ -6,14 +6,12 @@
  */
 
 import React, {useState} from 'react';
-import {SafeAreaView, StyleSheet, useColorScheme} from 'react-native';
+import {SafeAreaView, StyleSheet} from 'react-native';
 
-import {Colors} from 'react-native/Libraries/NewAppScreen';
 import HomePage from './pages/HomePage';
 import TasksPage from './pages/TasksPage';
 
 function App(): JSX.Element {
-  const isDarkMode = useColorScheme() === 'dark';
   const [isHomePage, setIsHomePage] = useState(true);
 
   const handlePress = () => {
@@ -22,12 +20,7 @@ function App(): JSX.Element {
 
   return (
     <SafeAreaView
-      style={[
-        isHomePage ? styles.containerTitle : styles.containerApp,
-        {
-          backgroundColor: isDarkMode ? Colors.black : Colors.white,
-        },
-      ]}>
+      style={[isHomePage ? styles.containerTitle : styles.containerApp]}>
       {isHomePage && <HomePage onPress={handlePress} />}
       {!isHomePage && <TasksPage />}
     </SafeAreaView>
@@ -38,9 +31,11 @@ const styles = StyleSheet.create({
   containerTitle: {
     flex: 1,
     justifyContent: 'center',
+    backgroundColor: 'white',
   },
   containerApp: {
     flex: 1,
+    backgroundColor: '#E8EAED',
   },
   TodoTitle: {
     textAlign: 'center',

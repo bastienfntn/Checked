@@ -5,6 +5,9 @@ import React from 'react';
 export default function TasksPage() {
   const [tasks, setTasks] = useState<string[]>([]);
   const addTask = (task: string) => {
+    if (!task.replace(/\s/g, '').length) {
+      return;
+    }
     setTasks([...tasks, task]);
   };
   const deleteTask = (index: number) => {

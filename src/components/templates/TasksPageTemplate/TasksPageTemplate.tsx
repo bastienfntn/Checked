@@ -68,7 +68,11 @@ export default function TasksPageTemplate({
         changeDeleteModalState={changeDeleteModalState}
         setTouchedTask={setTouchedTask}
       />
-      <BasicButton onPress={changeModalState} buttonTitle={buttonTitle} />
+      <BasicButton
+        onPress={changeModalState}
+        buttonTitle={buttonTitle}
+        style={styles.addButton}
+      />
       {isModalOpen && (
         <NewTaskModal handleCancel={changeModalState} addTask={handleAddTask} />
       )}
@@ -89,5 +93,8 @@ const styles = StyleSheet.create({
   taskListTitle: {
     marginLeft: 30,
     marginTop: 40,
+  },
+  addButton: {
+    backgroundColor: '#E8EAED',
   },
 });

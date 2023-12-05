@@ -22,6 +22,7 @@ export default function NewTaskModalView(props: Props) {
             value={text}
             onChange={event => setText(event.nativeEvent.text)}
             placeholder={'New Task'}
+            autoFocus={true}
           />
         </View>
         <View style={styles.buttonsView}>

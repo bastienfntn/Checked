@@ -1,7 +1,7 @@
 import TasksList from '../../organisms/TasksList/TasksList';
 import MediumTitle from '../../atoms/MediumTitle/MediumTitle';
-import {StyleSheet, View} from 'react-native';
-import React, {useState} from 'react';
+import {Animated, StyleSheet} from 'react-native';
+import React, {useEffect, useRef, useState} from 'react';
 import BasicButton from '../../atoms/BasicButton/BasicButton';
 import NewTaskModal from '../../organisms/NewTaskModal/NewTaskModal';
 import DeleteModal from '../../organisms/DeleteModal/DeleteModal';
@@ -24,6 +24,16 @@ export default function TasksPageTemplate({
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [isDeleteModalOpen, setIsDeleteModalOpen] = useState(false);
   const [touchedTask, setTouchedTask] = useState(-1);
+  const zoomIn = useRef(new Animated.Value(0)).current;
+
+  useEffect(() => {
+    Animated.timing(zoomIn, {
+      toValue: 1,
+      duration: 400,
+      useNativeDriver: true,
+    }).start();
+  }, [zoomIn]);
+
   const changeModalState = () => {
     setIsModalOpen(!isModalOpen);
   };
@@ -40,7 +50,17 @@ export default function TasksPageTemplate({
   };
 
   return (
-    <View style={styles.tasksPageTemplate}>
+    <Animated.View
+      style={[
+        styles.tasksPageTemplate,
+        {
+          transform: [
+            {
+              scale: zoomIn,
+            },
+          ],
+        },
+      ]}>
       <MediumTitle style={styles.taskListTitle}>{children}</MediumTitle>
       <TasksList
         tasks={tasks}
@@ -48,7 +68,11 @@ export default function TasksPageTemplate({
         changeDeleteModalState={changeDeleteModalState}
         setTouchedTask={setTouchedTask}
       />
-      <BasicButton onPress={changeModalState} buttonTitle={buttonTitle} />
+      <BasicButton
+        onPress={changeModalState}
+        buttonTitle={buttonTitle}
+        style={styles.addButton}
+      />
       {isModalOpen && (
         <NewTaskModal handleCancel={changeModalState} addTask={handleAddTask} />
       )}
@@ -58,7 +82,7 @@ export default function TasksPageTemplate({
           deleteTask={handleDeleteTask}
         />
       )}
-    </View>
+    </Animated.View>
   );
 }
 
@@ -69,5 +93,8 @@ const styles = StyleSheet.create({
   taskListTitle: {
     marginLeft: 30,
     marginTop: 40,
+  },
+  addButton: {
+    backgroundColor: '#E8EAED',
   },
 });

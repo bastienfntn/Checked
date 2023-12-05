@@ -35,7 +35,6 @@ const styles = StyleSheet.create({
   },
   containerApp: {
     flex: 1,
-    backgroundColor: '#E8EAED',
   },
   TodoTitle: {
     textAlign: 'center',

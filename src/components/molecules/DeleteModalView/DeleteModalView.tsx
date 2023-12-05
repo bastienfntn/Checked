@@ -20,7 +20,11 @@ export default function DeleteModalView(props: Props) {
         </View>
         <View style={styles.buttonsView}>
           <BasicButton onPress={props.handleCancel} buttonTitle={'Cancel'} />
-          <BasicButton onPress={props.deleteTask} buttonTitle={'Delete'} />
+          <BasicButton
+            onPress={props.deleteTask}
+            buttonTitle={'Delete'}
+            style={styles.deleteButton}
+          />
         </View>
       </View>
     </View>
@@ -59,5 +63,8 @@ const styles = StyleSheet.create({
   },
   buttonsView: {
     flexDirection: 'row',
+  },
+  deleteButton: {
+    backgroundColor: '#FAB4B4',
   },
 });
